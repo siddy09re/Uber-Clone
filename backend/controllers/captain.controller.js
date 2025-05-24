@@ -58,7 +58,7 @@ module.exports.loginCaptain = async (req,res,next) => {
     const token = captain.generatetoken();
     res.cookie('token' , token);
 
-    res.status(200).json({token , captain});
+    res.status(201).json({token , captain});
  
 }
 
@@ -75,3 +75,4 @@ module.exports.logoutCaptain = async(req,res,next)=>{
     res.clearCookie('token');
     res.status(200).json({message : 'Captain Logout successful'})
 }
+
