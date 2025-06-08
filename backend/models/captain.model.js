@@ -27,7 +27,7 @@ const captainSchema = new mongoose.Schema({
         required:true,
         select : false,
     },
-    socket_id:{
+    socketId:{
         type:String,
     },
     status : {
@@ -51,21 +51,23 @@ const captainSchema = new mongoose.Schema({
             vehicleType:{
                 type:String,
                 required:true,
-                enum: ['auto' , 'bike' , 'car']
+                enum: ['Auto' , 'Bike' , 'Car']
             }
         })
     } ,
 
-    location:{
-        type : new mongoose.Schema({
-            latitude:{
-                type:Number
-            },
-            longitude:{
-                type:Number
-            }
-        })
-    }
+    location: {
+        type: {
+          type: String, // Must be "Point"
+          enum: ['Point'],
+          
+        },
+        coordinates: {
+          type: [Number], // [lng, lat]
+          
+        }
+      }
+      
 })
 
 

@@ -37,13 +37,14 @@ module.exports.Userauthorization = async (req,res,next) => {
 
 module.exports.Captainauthorization = async(req,res,next)=>{
     const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
+    
 
     if(!token){
-        return res.status(401).json({message :"Unauthorized"});
+        return res.status(401).json({message :"xcvxUnauthorized"});
     }
     const isBlackListed = await blacklisted.findOne({token});
     if(isBlackListed){
-        return res.status(401).json({message:"Unauthorized"});
+        return res.status(401).json({message:"tttUnauthorized"});
     }
     try{
             const decoded = jwt.verify(token , process.env.JWT_SECRET);
@@ -51,6 +52,6 @@ module.exports.Captainauthorization = async(req,res,next)=>{
             req.captain = captain;
             return next();
     }catch(err){
-            return res.status(401).json({message : "Unauthorized"});
+            return res.status(401).json({message : "uuuUnauthorized"});
     }
 }

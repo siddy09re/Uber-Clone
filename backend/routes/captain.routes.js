@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {body} = require('express-validator');
 const captainController = require('../controllers/captain.controller');
+const rideController = require('../controllers/ride.controller')
 const authMiddleware = require('../middleware/auth.middleware');
 
 router.post('/register',[
@@ -26,6 +27,6 @@ router.get('/profile' ,authMiddleware.Captainauthorization , captainController.g
 
 router.get('/logout',authMiddleware.Captainauthorization , captainController.logoutCaptain);
 
-
+router.post('/GetNearbyUsers' ,rideController.fetchNearbyUsers )
 
 module.exports = router;
